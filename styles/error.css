@@ -1,5 +1,5 @@
 .error {
-  position: absolute;
+  position: inherit;
   inset: 0;
   display: flex;
   justify-content: center;
