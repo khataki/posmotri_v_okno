@@ -10,18 +10,21 @@
 
 *:focus {
   border: 1px solid white;
-  outline: none;
   outline-color: transparent;
 }
 
 **:focus-visible {
   border: 1px solid white;
-  outline: 1px double white;
-  outline-color: transparent;
+  outline: px double white;
+  outline-color: white;
 }
 
 html {
   block-size: 100%;
+}
+
+.body {
+  scrollbar-gutter: stable;
 }
 
 .page {
@@ -113,15 +116,17 @@ ol {
 
 .button:active {
   background-color: #545050;
+  text-decoration: none;
 }
 
 .button:hover {
   text-decoration: underline;
+
 }
 
 .button:focus-visible {
   outline: white double 1px;
-  ;
+  outline-offset: 1px;
 }
 
 .search-form__fieldset {
@@ -155,14 +160,16 @@ ol {
 }
 
 .content__video-card-thumbnail {
-  object-position: 50% 50%;
-  object-fit: fill;
+  align-self: flex-end;
+  object-fit: cover;
+  object-position: center;
   width: 194px;
   height: 103px;
   margin: 2px 2px 2px 0;
 }
 
 .content__card-link {
+  display: block;
   text-decoration: none;
 }
 
@@ -184,12 +191,13 @@ ol {
 .content__list {
   position: relative;
   display: flex;
-  height: 317px;
+  height: 299px;
   flex-direction: column;
   gap: 30px;
   overflow-y: scroll;
   overflow-x: visible;
-  width: 400px;
+  width: 399px;
+  scrollbar-gutter: stable;
 }
 
 .content__accent {
@@ -285,13 +293,26 @@ ol {
   align-items: center;
 }
 
-.search-form__label:hover {
-  text-decoration: underline rgb(255, 255, 255, 0.6);
+.search-form__label-text:hover {
+  text-decoration: underline rgb(255, 255, 255, 0.2);
   cursor: text;
 }
 
+.search-form__textfield:active {
+  outline: 1px solid #FFF;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+  border: 1px solid #FFF;
+}
+
+.search-form__label:active {
+  outline: none;
+}
+
 .search-form__label:focus-visible {
-  border: solid 1px;
+  outline: none;
 }
 
 .search-form__pseudo-checkbox::before {
@@ -324,4 +345,29 @@ ol {
 
 .search-form__label-text:hover {
   text-decoration: underline;
+}
+
+.search-form__label-text:focus {
+  outline: 1px solid white;
+}
+
+.search-form__label:has(:focus-visible),
+.search-form__checkbox:focus-visible+label {
+  outline: none;
+  border: 1px solid white;
+}
+
+/* Стили для активированных чекбоксов */
+.search-form__checkbox:checked+label .search-form__pseudo-checkbox::before {
+  background-color: white;
+  border-color: white;
+}
+.search-form__textfield::before,
+.search-form__textfield::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px; /* Ширина границы слева и справа */
+  background-color: white;
 }
